@@ -5,8 +5,7 @@ go 1.12
 require (
 	github.com/sirupsen/logrus v1.4.0
 	github.com/stretchr/testify v1.3.0
-	github.com/vishvananda/netlink v1.0.0
-	github.com/vishvananda/netns v0.0.0-20180720170159-13995c7128cc // indirect
-	golang.org/x/sys v0.0.0-20191028164358-195ce5e7f934
-	golang.zx2c4.com/wireguard/wgctrl v0.0.0-20191028205011-23406de29c08
+	github.com/vishvananda/netlink v1.1.1-0.20210330154013-f5de75959ad5
+	golang.org/x/sys v0.0.0-20220310020820-b874c991c1a5
+	golang.zx2c4.com/wireguard/wgctrl v0.0.0-20220208144051-fde48d68ee68
 )

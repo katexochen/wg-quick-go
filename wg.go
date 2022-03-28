@@ -285,8 +285,9 @@ func SyncRoutes(cfg *Config, link netlink.Link, managedRoutes []net.IPNet, log l
 			LinkIndex: link.Attrs().Index,
 			Dst:       &rt,
 			Table:     cfg.Table,
-			Protocol:  cfg.RouteProtocol,
-			Priority:  cfg.RouteMetric}
+			Protocol:  netlink.RouteProtocol(cfg.RouteProtocol),
+			Priority:  cfg.RouteMetric,
+		}
 		fillRouteDefaults(&nrt)
 		wantedRoutes[rt.String()] = append(wantedRoutes[rt.String()], nrt)
 	}
@@ -331,7 +332,7 @@ func SyncRoutes(cfg *Config, link netlink.Link, managedRoutes []net.IPNet, log l
 			continue
 		}
 
-		if !(rt.Protocol == cfg.RouteProtocol) {
+		if !(rt.Protocol == netlink.RouteProtocol(cfg.RouteProtocol)) {
 			log.Infof("skipping route deletion, not owned by this daemon")
 			continue
 		}
