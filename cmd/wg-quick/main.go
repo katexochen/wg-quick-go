@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/nmiculinic/wg-quick-go"
+	wgquick "github.com/nmiculinic/wg-quick-go"
 	"github.com/sirupsen/logrus"
 )
 

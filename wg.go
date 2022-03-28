@@ -147,7 +147,6 @@ func Sync(cfg *Config, iface string, logger logrus.FieldLogger) error {
 	log.Info("synced routed")
 	log.Info("Successfully synced device")
 	return nil
-
 }
 
 // SyncWireguardDevice synces wireguard vpn setting on the given link. It does not set routes/addresses beyond wg internal crypto-key routing, only handles wireguard specific settings
@@ -271,7 +270,7 @@ func fillRouteDefaults(rt *netlink.Route) {
 
 // SyncRoutes adds/deletes all route assigned IPV4 addressed as specified in the config
 func SyncRoutes(cfg *Config, link netlink.Link, managedRoutes []net.IPNet, log logrus.FieldLogger) error {
-	var wantedRoutes = make(map[string][]netlink.Route, len(managedRoutes))
+	wantedRoutes := make(map[string][]netlink.Route, len(managedRoutes))
 	presentRoutes, err := netlink.RouteList(link, syscall.AF_INET)
 	if err != nil {
 		log.Error(err, "cannot read existing routes")

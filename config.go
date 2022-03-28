@@ -50,8 +50,10 @@ type Config struct {
 	SaveConfig bool
 }
 
-var _ encoding.TextMarshaler = (*Config)(nil)
-var _ encoding.TextUnmarshaler = (*Config)(nil)
+var (
+	_ encoding.TextMarshaler   = (*Config)(nil)
+	_ encoding.TextUnmarshaler = (*Config)(nil)
+)
 
 func (cfg *Config) String() string {
 	b, err := cfg.MarshalText()
@@ -174,6 +176,7 @@ func (cfg *Config) UnmarshalText(text []byte) error {
 	}
 	return nil
 }
+
 func parseInterfaceLine(cfg *Config, lhs string, rhs string) error {
 	switch lhs {
 	case "Address":
